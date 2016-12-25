@@ -14,11 +14,9 @@ export default class topMenu extends Component {
     return (
       <View style={stylesTopMenu.container}>
         <CustomButton title="Dépense" 
-                      activated={this.props.route.view === 'add'}
-                      onPress={this.props.previousScene}/>
+                      activated={this.props.route.view === 'add'}/>
         <CustomButton title="Récapitulatif"
-                      activated={this.props.route.view === 'history'}
-                      onPress={this.props.nextScene}/>
+                      activated={this.props.route.view === 'history'}/>
       </View>
     )
   }
