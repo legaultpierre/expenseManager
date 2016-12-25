@@ -13,11 +13,11 @@ import {CustomButton} from './common.js';
 export default class BottomPart extends Component {
   constructor(props) {
     super(props);
-    this.state = {expenseAmount: 0};
+    this.state = {expenseAmount: 0, expenseType: this.props.typeExpense[0]};
   }
   sendPress(thisContext) {
     return () => {
-      console.log("Expense saved: ", thisContext.state.expenseAmount)
+      console.log("Expense saved: ", thisContext.state.expenseType, thisContext.state.expenseAmount)
     };
   }
   render() {
@@ -26,7 +26,10 @@ export default class BottomPart extends Component {
         <Text style={textStyle}>
           Saisis ici ta dépense
         </Text>
-        <Picker style={{width: 175}} mode="dropdown" selectedValue={this.props.typeExpense[0]} onValueChange={(val) => console.log(val)}>
+        <Picker style={{width: 175}}
+                mode="dropdown"
+                selectedValue={this.state.expenseType}
+                onValueChange={(val) => this.setState({expenseType: val})}>
             {
               this.props.typeExpense.map((val,i) => {
                 return <Picker.Item label={val} value={val} key={i}/>
@@ -37,7 +40,7 @@ export default class BottomPart extends Component {
             <TextInput 
               style={{width: 45, textAlign: 'right', color: 'white'}}
               keyboardType = 'numeric'
-              onChangeText = {(text) => {console.log('ex', this.state); this.setState({expenseAmount: +text})}}
+              onChangeText = {(text) => this.setState({expenseAmount: +text})}
               value = {'' + this.state.expenseAmount}/>
             <Text style={textStyle}>€</Text>
           </View>
