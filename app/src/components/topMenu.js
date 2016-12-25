@@ -25,6 +25,7 @@ export default class topMenu extends Component {
 const stylesTopMenu = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: 100
   }
 });

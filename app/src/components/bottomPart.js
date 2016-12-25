@@ -23,10 +23,10 @@ export default class BottomPart extends Component {
   render() {
     return (
       <View style={bottomStyles}>
-        <Text>
+        <Text style={textStyle}>
           Saisis ici ta dépense
         </Text>
-        <Picker style={{width: 100}} mode="dropdown" selectedValue={this.props.typeExpense[0]} onValueChange={(val) => console.log(val)}>
+        <Picker style={{width: 175}} mode="dropdown" selectedValue={this.props.typeExpense[0]} onValueChange={(val) => console.log(val)}>
             {
               this.props.typeExpense.map((val,i) => {
                 return <Picker.Item label={val} value={val} key={i}/>
@@ -39,7 +39,7 @@ export default class BottomPart extends Component {
               keyboardType = 'numeric'
               onChangeText = {(text) => {console.log('ex', this.state); this.setState({expenseAmount: +text})}}
               value = {'' + this.state.expenseAmount}/>
-            <Text style={{alignItems: 'center', color: 'white'}}>€</Text>
+            <Text style={textStyle}>€</Text>
           </View>
           <View style={{paddingTop: 20}}>
             <CustomButton activated={true} title="Envoyer !" onPress={this.sendPress(this)}/>
@@ -54,3 +54,9 @@ const bottomStyles = {
   justifyContent: 'center',
   alignItems: 'center'
 };
+
+const textStyle = {
+  fontSize: 20,
+  alignItems: 'center',
+  color: 'white'
+}

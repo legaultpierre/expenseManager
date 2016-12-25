@@ -35,7 +35,7 @@ const stylesMain = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 20,
+    fontSize: 40,
     textAlign: 'center',
     margin: 10
   }
