@@ -23,7 +23,7 @@ export default class expanses extends Component {
     console.log('store', store.getState())
     return (
       <Provider store={store}>
-        <Main styles={stylesMain} typeExpense={['java', 'js']}/>
+        <Main styles={stylesMain} typeExpense={['Appartement', 'Courses']}/>
       </Provider>
     );
   }

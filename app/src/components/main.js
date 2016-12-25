@@ -17,13 +17,17 @@ export default class expanses extends Component {
     super(props);
   }
   onForward(navigator, routes, route){    
-    const nextIndex = route.index + 1 < routes.length ? route.index + 1 : route.index ;
-    navigator.push(routes[nextIndex]);
+    return () => {
+      const nextIndex = route.index + 1 < routes.length ? route.index + 1 : route.index ;
+      navigator.push(routes[nextIndex])
+    };
   }
   // Function to call to go back to the previous scene
   onBack(navigator, route) {
-    if (route.index > 0) {
-      navigator.pop();
+    return () => {
+      if (route.index > 0) {
+        navigator.pop();
+      }
     }
   }
   render() {
@@ -42,7 +46,9 @@ export default class expanses extends Component {
         renderScene={(route, navigator) => {
           return (
             <View style={_this.props.styles.container}>
-              <ActiveTopMenu route={route}/>
+              <ActiveTopMenu route={route} 
+                             nextScene={this.onForward(navigator, routes, route)} 
+                             previousScene={this.onBack(navigator, route)}/>
               <BottomPart 
                 styles={_this.props.styles} 
                 route={route}

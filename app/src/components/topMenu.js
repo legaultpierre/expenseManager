@@ -13,8 +13,12 @@ export default class topMenu extends Component {
     console.log('this', this)
     return (
       <View style={stylesTopMenu.container}>
-        <CustomButton title="Dépense" activated={this.props.route.view === 'add'}/>
-        <CustomButton title="Récapitulatif" activated={this.props.route.view === 'history'}/>
+        <CustomButton title="Dépense" 
+                      activated={this.props.route.view === 'add'}
+                      onPress={this.props.previousScene}/>
+        <CustomButton title="Récapitulatif"
+                      activated={this.props.route.view === 'history'}
+                      onPress={this.props.nextScene}/>
       </View>
     )
   }
